@@ -1,0 +1,55 @@
+{% extends 'feira/modelo.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Gráficos</title>
+    
+{% endblock %}
+
+{% block titulo %}
+<h1 class="text-danger">Pagina de Gráficos</h1>
+{% endblock %}
+{% block conteudo %}
+<h3>alguma coisa aqui</h3>
+    <div id="columnchart_values">
+        
+    </div>
+{% endblock %}
+
+{% block rodape %}
+<p>Desenvolvido por: <strong>FPS_Neto</strong></p>
+{% endblock %}
+{% block script %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ["Element", "Density", { role: "style" } ],
+            ["Copper", 8.94, "#b87333"],
+            ["Silver", 10.49, "silver"],
+            ["Gold", 19.30, "gold"],
+            ["Platinum", 21.45, "color: #e5e4e2"]
+        ]);
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                            { calc: "stringify",
+                                sourceColumn: 1,
+                                type: "string",
+                                role: "annotation" },
+                            2]);
+
+            var options = {
+                title: "Density of Precious Metals, in g/cm^3",
+                width: 800,
+                height: 500,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            chart.draw(view, options);
+        }
+        </script>
+    <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+{% endblock %}

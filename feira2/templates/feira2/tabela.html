@@ -1,0 +1,119 @@
+{% extends 'feira2/modelo.html' %}
+{% load static %}
+
+{% block conteudo %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Leitura de Energia da feira do Guara</h5>
+            <p></p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dt-buttons ">          
+                                <!-- <button class="btn btn-outline-light buttons-copy buttons-html5" tabindex="0" aria-controls="example" type="button"><span>Copy</span></button>  -->
+                                <!-- <button class="btn btn-outline-light buttons-excel buttons-html5" tabindex="0" aria-controls="example" type="button"><span>Excel</span></button>  -->
+                                <div class="col-sm-4 col-md-6" ><div id="example_filter" class="dataTables_filter text-left"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example"></label>
+                                <button id="pdf" class="btn btn-outline-success  pdf" tabindex="0" aria-controls="example " ><span >PDF</span></button> 
+                                <!-- <button class="btn btn-outline-light buttons-print" tabindex="0" aria-controls="example" type="button"><span>Print</span></button> -->
+                                <!-- <button type="Application/pdf" class="btn-outline-light buttons-pdf buttons-html5">pdf_</button> -->
+
+                                <!-- <button class="btn btn-outline-light buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="example" type="button" aria-haspopup="true"><span>Column visibility</span></button>  -->
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row container center">
+                    <div class="col-sm-9 auto">
+                    <table id="examplo" class="table table-striped table-bordered second dataTable " style="width: 100%;" role="grid" aria-describedby="example_info">
+                        
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending"  style="width: 33.0089px;">Qtd</th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 53.0089px;">Banca</th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 41.0089px;">Leitura Anterior</th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 26.0089px;">Leitura Atual</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 49.0089px;">Consumo em Kw/h</th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 41.0089px;">Total a pagar</th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 41.0089px;">Checar</th>
+                            
+                        </thead>
+                    <tbody>
+                        {% for item in object_list %}            
+                    <tr role="row" class="odd text-center">
+                            <td class="sorting_1 qtd" >{{ item.banca.qtd }}</td> 
+                            <td class="">{{ item.banca.numero }}</td>                           
+                            <td class="ant">{{ item.anterior }}</td>
+                            <td class="atual">{{ item.atual }}</td>
+                            <td class="soma">soma </td> 
+                            <td class="total">total </td>
+                            <td ><input type="checkbox" name="confirmar" class="Checar"></td>                                             
+                        {% endfor %}
+                                
+                    
+                    </tr></tbody>
+                    <!-- <p>Total: <span id="somatoria"></span></p>
+                    <tfoot>
+                        <tr><th rowspan="1" colspan="1">Banca</th><th rowspan="1" colspan="1">Leitra anterior</th><th rowspan="1" colspan="1">Leitura atual</th><th rowspan="1" colspan="1">data da leitura </th>
+                    </tfoot> -->
+                </table>
+            <!-- </div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="example_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example_next"><a href="#" aria-controls="example" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div> -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static '/js/jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script scr="{% static 'js/printThis.js' %}"></script>
+<script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static '/assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+<script src="{% static '/assets/libs/js/main-js.js' %}"></script>
+
+
+<script>
+    $("#pdf").click(()=>{
+        // alert('fui clicado')
+        window.print();
+            
+        });
+
+    $('.Checar').click(function(){
+        // alert('clicou');
+        $(this).toggleClass(".pagou");
+               
+    });
+
+    
+// ############################################
+    var lista = $('.soma');
+    var ant = $('.ant');
+    var atual = $('.atual');
+    var total = $('.total')
+    var qtd = $('.qtd')
+    for (i = 0; i <= lista.length; i ++){
+        var soma = atual[i].textContent - ant[i].textContent 
+        var txilu = qtd[i].textContent * 7.85 
+        var txcom = qtd[i].textContent * 8.41             
+        $(lista[i]).html( soma);
+        $(total[i]).html("R$ " + (((soma * 0.75)) + txcom + txilu).toFixed(2));        
+                        
+    } ;
+// ############### Imprime PDF #############################
+    $("#pdf").click(()=>{
+        alert("fui clicado!");
+    });
+
+    
+
+                       
+</script>
+<script>
+    
+</script>
+{% endblock %}

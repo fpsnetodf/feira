@@ -1,0 +1,35 @@
+{% extends 'feira2/modelo.html' %}
+{% load static %}
+{% block titulo %}
+
+{% endblock %}
+{% block conteudo %}
+<div class="container col-6 auto">
+<table class="table table-striped text-center ">    
+    <thead>
+      <tr>
+        <th >Qtd</th>
+        <th >Banca</th>
+        <th >Leitura anterior (Kw/h) </th>
+        <th >Leitura atual (Kw/h) </th>
+        <!-- <th >Data da Leitura</th> -->
+        <!-- <th >Consumo em Kw/h</th>
+        <th >Total a pagar</th>
+        <th >Editar </th> -->
+      </tr>
+    </thead>
+    {% for item in object_list %}
+    <tbody >      
+      <tr > 
+        <td class="qtd">{{ item.banca.qtd }}</td>       
+        <td>{{ item.banca.numero }}</td>
+        <td class="ant">{{ item.atual }}</td>        
+        <td class="atual"><input type="text" name="atualizar" id=""></td>
+        <!-- <td class="atual"><input type="text" name="data" id=""></td>
+        <td class="total"></td> -->
+      </tr>      
+    </tbody>
+    {% endfor %}    
+</table>
+</div>  
+{% endblock %}

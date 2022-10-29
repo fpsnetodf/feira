@@ -1,0 +1,30 @@
+{% extends 'usuarios/modelo.html' %}
+{% load static %} 
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% block titulo %}
+    <div class="container col-4 auto">
+        <h1 class="text-info">Autenticação</h1>
+    </div>
+{% endblock %}
+
+{% block conteudo %}
+    <div class="container col-4 auto">        
+       <form action="" method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-light mt-3">Entrar</button>
+       </form> 
+    </div>
+{% endblock %}
+
+{% block rodape %}
+    <div class="container text-center mt-5">
+        <p>Desenvolvido por: <strong>FPS_Neto</strong></p>
+    </div>        
+{% endblock %}

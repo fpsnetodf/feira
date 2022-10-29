@@ -1,0 +1,43 @@
+{% extends 'feira/modelo.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Bancas</title>
+{% endblock %}
+
+{% block titulo %}
+    <h1 class="text-danger">Bancas</h1>
+{% endblock %}
+
+{% block conteudo %}
+    <div class="container">
+    <table class="table">        
+        <thead class="thead-dark">
+            <tr>        
+                <div class="input-group mb-3">
+                    {% for banca in object_list %}
+                    {% if banca.qtd == 1 %}
+                        <th class="input-group mb-3" scope="col"><input class="custom-control-input" type="checkbox" > {{ banca.qtd }} - Banca N: {{ banca.numero }} 
+                    {% else %}
+                        <th class="input-group mb-3 " scope="col"><input type="checkbox"> {{ banca.qtd }} - Banca N: {{ banca.numero }}/{{ banca.obs }}</th>
+                </div>                
+                    {% endif %}                
+            </tr>
+        </thead>
+                    {% endfor %}
+    </table>
+</div>
+{% endblock %}
+{% block rodape %}
+    <p class="text-center">Desenvolvido por: <strong>FPS_Neto</strong></p>
+{% endblock %}
+{% block script %}
+        <script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+        <script>
+            function addClasse(){
+                $(this).click(()=>{
+                    $('checkbox').toggleClass('checked')
+                })
+            }
+        </script>        
+{% endblock %}

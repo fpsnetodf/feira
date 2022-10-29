@@ -1,0 +1,67 @@
+{% extends 'feira/modelo.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    <title>leituras</title>
+{% endblock %}
+
+{% block titulo %}
+  <h1 class="text-danger text-center">estou aqui</h1>
+{% endblock %}
+
+{% block conteudo %}
+  <div class="container">
+    <nav class="nav col-10 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">        
+    <table class="table table-striped">    
+      <thead>
+            <tr>
+                <th scope="col">Qtd</th>
+                <th scope="col">Banca</th>
+                <th scope="col">Anterior</th>
+                <th scope="col">Atual</th>
+                <th scope="col">Kw/h</th>
+                <th scope="col">subtotal</th>
+                <th scope="col">Iluminação P.</th>
+                <th scope="col">Area Comum</th>
+                <th scope="col">Unitário</th>
+                <th scope="col">Editar </th>
+            </tr>
+          </thead>    
+    </nav>
+      <tbody> 
+        {% for item in object_list %}     
+          <tr > 
+              <td class="qtd">{{ item.banca.qtd  }}</td>       
+              <td>{{ item.banca.numero  }}</td>
+              <td class="ant">{{ item.anterior  }}</td>        
+              <td class="atual">{{ item.atual  }}</td>
+              {% for c in conta %}
+              
+              <td class="soma"></td>
+              <td class="subtotal"></td>
+              <td class="il-p">{{ c.taxaIlum }}</td>
+              <td class="comum">{{ c.corredor }}</td>
+              <td class="total"></td>
+              <td class="editar-excluir btn btn-info sm ">
+                <a href="{% url 'atualizar_leitura' item.pk %}" class="btn btn-warning " title="Editar">E</a> 
+              </td>
+              {% endfor %}
+          </tr> 
+        {% endfor %}     
+      </tbody>        
+    </table>
+  </div>
+  <p class="TotalSoma"><b>Total Arecadado: </b></p>
+{% endblock %}
+
+{% block rodape %}
+  <p>Desenvolvido por: <strong>FPS_Neto</strong></p>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'js/feira_leitura_list_soma.js' %}"></script> 
+<script src="{% static 'js/feira_leitura_list_total.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.8.2" integrity="sha384-+8ISc/waZcRdXCLxVgbsLzay31nCdyZXQxnsUy++HJzJliTzxKWr0m1cIEMyUzQu" crossorigin="anonymous"></script>
+    <title>Testanto HTMX</title>
+</head>
+<body>
+    <h1>Meu primeiro teste com HTMX</h1>
+    <button hx-get="/listar/leitura/"  hx-trigger="click" hx-target="#meu_p" >
+        Click Me!
+        </button>
+         
+
+
+<h2>Outro exemplo</h2>
+<input type="text" name="q" hx-get="/leitura" hx-trigger="click" hx-select="#algo" hx-target="#search-results" placeholder="Search...">
+<div id="search-results"></div>
+<h3>teste 3</h3>
+<button hx-get="/leitura" hx-select="#algo" hx-trigger="click" hx-target="#meu_p" hx-swap="outerHTML" class="btn btn-danger">
+    Click Me!
+</button>
+<p id="pdf" class="nav-link">meu_pdf</p> 
+<p id="meu_p"></p> 
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script> 
+<script>
+    $("#pdf").click(()=>{
+        window.print();
+    })
+
+</script> 
+</body>
+</html>

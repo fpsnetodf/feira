@@ -1,0 +1,46 @@
+{% extends 'feira2/modelo.html' %}
+{% block titulo %}
+<div class="container">
+<nav class="navbar navbar-dark bg-info">
+  <div class="container  ">
+    <a class="navbar-brand" href="#">
+      <!-- <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
+      Controle de Energia Feira do Guara
+    </a>
+  </div>
+</nav>
+</div>
+
+{% endblock %}
+{% block conteudo %}
+<div class="container">
+<table class="table table-striped text-center">    
+    <thead>
+      <tr>
+        <th >Qtd</th>
+        <th >Banca</th>
+        <th >Leitura anterior (Kw/h) </th>
+        <th >Leitura atual (Kw/h) </th>
+        <th >Data da Leitura</th>
+        <!-- <th >Consumo em Kw/h</th>
+        <th >Total a pagar</th>
+        <th >Editar </th> -->
+      </tr>
+    </thead>
+    {% for item in object_list %}
+    <tbody >      
+      <tr > 
+        <td class="qtd">{{ item.banca.qtd }}</td>       
+        <td>{{ item.banca.numero }}</td>
+        <td class="ant">{{ item.anterior }}</td>        
+        <td class="atual">{{ item.atual }}</td>
+        <td class="soma"></td>
+        <td class="total"></td>
+      </tr>      
+    </tbody>
+    {% endfor %}
+    
+</table>
+
+</div>  
+{% endblock %}

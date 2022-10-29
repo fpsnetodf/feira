@@ -1,0 +1,21 @@
+{% extends 'feira/modelo.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{ titulo }}</title>
+{% endblock %}
+
+
+{% block titulo %}
+    <h1 class="text-danger">Bem vindo, {{ request.user }}</h1>
+{% endblock %}
+
+{% block conteudo %}
+    <h3 id="algo">alguma coisa aqui - {{ titulo }}</h3>
+{% endblock %}
+
+{% block rodape %}
+    <p>Desenvolvido por: <strong>FPS_Neto</strong></p>
+{% endblock %}
+
+    
